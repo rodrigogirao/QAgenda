@@ -7,7 +7,4 @@
         <file>10693_64x64.png</file>
         <file>stylesheet.qss</file>
     </qresource>
-    <qresource prefix="/">
-        <file>ui.qml</file>
-    </qresource>
 </RCC>

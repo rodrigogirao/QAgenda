@@ -15,6 +15,7 @@ public:
     explicit VisualizarLog(QWidget *parent = 0);
     ~VisualizarLog();
     void setArquivo(QString texto);
+    void setDestinatario(QString texto);
     
 private:
     Ui::VisualizarLog *ui;

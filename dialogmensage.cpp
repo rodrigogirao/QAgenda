@@ -8,6 +8,7 @@ DialogMensage::DialogMensage(QWidget *parent) :
     ui(new Ui::DialogMensage)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Mensagem");
 }
 
 DialogMensage::~DialogMensage()
@@ -18,22 +19,28 @@ DialogMensage::~DialogMensage()
 void DialogMensage::setEmailSelecionado(QString emailSelecionado)
 {
 
-    ui->label->setText(emailSelecionado);
+    ui->destinatario->setText(emailSelecionado);
 
 }
 
 void DialogMensage::on_buttonBox_accepted()
 {
-   QFile file(ui->label->text());
-   qDebug() << "passou aqui " + ui->label->text();
+    QString arquivoLido="";
+    QFile file(ui->destinatario->text());
+    if (QFile::exists(ui->destinatario->text())){
+
+        if (file.open(QIODevice::ReadOnly)) {
+            QDataStream streamLer(&file);
+            while ( !streamLer.atEnd() ) {
+                streamLer >> arquivoLido;
+                file.close();
+            }
+
+        }
+    }
     if ( file.open(QIODevice::WriteOnly) ) {
-        QDataStream stream(&file);
-
-
-            stream << ui->leenviarMensagem->text();
-
-
+        QDataStream streamEscrever(&file);
+        streamEscrever <<arquivoLido +"\n"+ ui->teEnviarMensagem->toPlainText();
         file.close();
     }
-
 }

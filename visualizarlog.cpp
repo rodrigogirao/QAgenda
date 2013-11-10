@@ -6,6 +6,7 @@ VisualizarLog::VisualizarLog(QWidget *parent) :
     ui(new Ui::VisualizarLog)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Mensagens Enviadas");
 }
 
 VisualizarLog::~VisualizarLog()
@@ -16,4 +17,9 @@ VisualizarLog::~VisualizarLog()
 void VisualizarLog::setArquivo(QString texto)
 {
     ui->plainTextEdit->setPlainText(texto);
+}
+
+void VisualizarLog::setDestinatario(QString texto)
+{
+    ui->destinatario->setText(texto);
 }
