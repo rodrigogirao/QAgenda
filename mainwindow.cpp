@@ -105,6 +105,50 @@ void MainWindow::on_actionAdicionar_triggered()
 
 }
 
+void MainWindow::on_actionEditar_triggered()
+{
+    Pessoa p;
+    QModelIndex index;
+    index = ui->tbIniciar->currentIndex();
+    p = pessoas.at(index.row());
+
+    ACD->setEmail(p.email);
+    ACD->setNivelAmizade(p.nivelAmizade);
+    ACD->setFoto(p.foto);
+    ACD->exec();
+    if (ACD->result() == QDialog::Accepted) {
+        Pessoa pessoa;
+        pessoa.foto = ACD->getFoto();
+        pessoa.email = ACD->getEmail();
+        qDebug() << "saiu o resultado "+ACD->getEmail();
+        // pessoa.telefone = ACD->getTelefone();
+        pessoa.nivelAmizade = ACD->getNivelAmizade();
+        pessoas.replace(index.row(), pessoa);
+        reloadListaPessoas();
+        QString arquivoLido;
+        QFile oldFile(p.email);
+        QFile newFile(pessoa.email);
+
+        if (oldFile.open(QIODevice::ReadOnly)) {
+            QDataStream streamLer(&oldFile);
+            while ( !streamLer.atEnd() ) {
+                streamLer >> arquivoLido;
+                oldFile.remove();
+            }
+        }
+
+        if ( newFile.open(QIODevice::WriteOnly) ) {
+            QDataStream streamEscrever(&newFile);
+            streamEscrever <<arquivoLido;
+            newFile.close();
+        }
+    }
+    ACD->setEmail("");
+    ACD->setNivelAmizade(50);
+    ACD->setFoto("");
+
+}
+
 void MainWindow::on_tableView_doubleClicked(const QModelIndex &index)
 {
 

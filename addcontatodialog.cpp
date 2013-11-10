@@ -21,12 +21,6 @@ AddContatoDialog::~AddContatoDialog()
     delete ui;
 }
 
-QString AddContatoDialog::getNome()
-{
-    return ui->lenome->text();
-    qDebug() << "a saida foi" + ui->lenome->text();
-}
-
 QString AddContatoDialog::getEmail()
 {
     return ui->leemail->text();
@@ -40,6 +34,31 @@ QString AddContatoDialog::getFoto()
 int AddContatoDialog::getNivelAmizade()
 {
     return ui->horizontalSlider->value();
+}
+
+void AddContatoDialog::setEmail(QString email)
+{
+    ui->leemail->setText(email);
+}
+
+void AddContatoDialog::setFoto(QString foto)
+{
+    imagem = foto;
+    if (imagem!=""){
+        QFile arquivo(imagem);
+
+        if (arquivo.open(QIODevice::ReadOnly)) {
+            ui->lbfoto->setPixmap(QPixmap(imagem));
+        }
+        arquivo.close();
+    }else{
+        ui->lbfoto->setPixmap(QPixmap(":/new/prefix1/10693_64x64.png"));
+    }
+}
+
+void AddContatoDialog::setNivelAmizade(int valor)
+{
+    ui->horizontalSlider->setValue(valor);
 }
 
 

@@ -16,7 +16,7 @@
   <layout class="QVBoxLayout" name="verticalLayout_4">
    <item>
     <layout class="QVBoxLayout" name="verticalLayout_3">
-     <item>
+     <item alignment="Qt::AlignHCenter">
       <widget class="QLabel" name="lbfoto">
        <property name="text">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;&lt;img src=&quot;:/new/prefix1/10693_64x64.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -40,13 +40,6 @@
      <item>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
-        <widget class="QLabel" name="lbnome">
-         <property name="text">
-          <string>Nome</string>
-         </property>
-        </widget>
-       </item>
-       <item>
         <widget class="QLabel" name="lbemail">
          <property name="text">
           <string>Email</string>
@@ -65,13 +58,19 @@
      <item>
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
-        <widget class="QLineEdit" name="lenome"/>
-       </item>
-       <item>
         <widget class="QLineEdit" name="leemail"/>
        </item>
        <item>
         <widget class="QSlider" name="horizontalSlider">
+         <property name="minimum">
+          <number>1</number>
+         </property>
+         <property name="maximum">
+          <number>100</number>
+         </property>
+         <property name="value">
+          <number>50</number>
+         </property>
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>

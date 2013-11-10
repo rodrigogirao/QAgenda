@@ -16,10 +16,12 @@ public:
     explicit AddContatoDialog(QWidget *parent = 0);
     ~AddContatoDialog();
 public:
-    QString getNome();
     QString getEmail();
     QString getFoto();
     int getNivelAmizade();
+    void setEmail(QString email);
+    void setNivelAmizade(int valor);
+    void setFoto(QString foto);
     
 private slots:
    void on_commandLinkButton_clicked();

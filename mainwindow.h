@@ -49,6 +49,8 @@ private slots:
 
     void on_actionLog_MSG_triggered();
 
+    void on_actionEditar_triggered();
+
 private:
     Ui::MainWindow *ui;
     // QDeclarativeView *ui;

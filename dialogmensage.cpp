@@ -35,12 +35,13 @@ void DialogMensage::on_buttonBox_accepted()
                 streamLer >> arquivoLido;
                 file.close();
             }
+            arquivoLido= arquivoLido+"\n";
 
         }
     }
     if ( file.open(QIODevice::WriteOnly) ) {
         QDataStream streamEscrever(&file);
-        streamEscrever <<arquivoLido +"\n"+ ui->teEnviarMensagem->toPlainText();
+        streamEscrever <<arquivoLido +ui->teEnviarMensagem->toPlainText();
         file.close();
     }
 }
