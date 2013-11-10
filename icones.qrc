@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/new/prefix1">
+        <file>272_128x128.png</file>
+        <file>1295_64x64.png</file>
+        <file>1957_64x64.png</file>
+        <file>7660_64x64.png</file>
+        <file>10693_64x64.png</file>
+        <file>stylesheet.qss</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>ui.qml</file>
+    </qresource>
+</RCC>
